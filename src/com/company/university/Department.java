@@ -5,19 +5,18 @@ import java.util.List;
 
 public class Department {
     private static long countId = 1;
-    private long id;
+    private Long id;
     private String name;
     private List<Teacher> teachers;
-    private List<Faculty> faculties;
+    private Faculty faculty;
 
-    public Department(long id, String name) {
+    public Department(String name) {
         this.id = countId++;
         this.name = name;
         teachers = new ArrayList<>();
-        faculties = new ArrayList<>();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -37,12 +36,23 @@ public class Department {
         this.teachers = teachers;
     }
 
-    public List<Faculty> getFaculties() {
-        return faculties;
+    public Faculty getFaculty() {
+        return faculty;
     }
 
-    public void setFaculties(List<Faculty> faculties) {
-        this.faculties = faculties;
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
+    public void addTeacherToDepartment(Teacher teacher) {
+        if (teacher != null) {
+            if (!teachers.contains(teacher)) {
+                teachers.add(teacher);
+            }
+        }
+    }
+    
+    public void deleteTeacherFromDepartment(Teacher teacher) {
+        teachers.remove(teacher);
+    }
 }

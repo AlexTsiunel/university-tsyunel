@@ -1,22 +1,22 @@
 package com.company.university;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Faculty {
     private static long countId = 1;
-    private long id;
+    private Long id;
     private String name;
-    private Department department;
+    private List<Department> departments;
     private List<Group> groups;
 
-    public Faculty(long id, String name, Department department, List<Group> groups) {
+    public Faculty(String name) {
         this.id = countId++;
         this.name = name;
-        this.department = department;
-        this.groups = groups;
+        this.groups = new ArrayList<>();
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -28,12 +28,12 @@ public class Faculty {
         this.name = name;
     }
 
-    public Department getDepartment() {
-        return department;
+    public List<Department> getDepartments() {
+        return departments;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
     }
 
     public List<Group> getGroups() {
@@ -44,4 +44,31 @@ public class Faculty {
         this.groups = groups;
     }
 
+    public void addGroupe(Group group) {
+        if (group != null) {
+            if (!groups.contains(group)) {
+                groups.add(group);
+            }
+        }
+    }
+
+    public void deleteGroupe(Group group) {
+        if (group != null) {
+            groups.remove(group);
+        }
+    }
+    
+    public void addDepartment(Department department) {
+        if (department != null) {
+            if (!departments.contains(department)) {
+                departments.add(department);
+            }
+        }
+    }
+
+    public void deleteDepartment(Department department) {
+        if (department != null) {
+            departments.remove(department);
+        }
+    }
 }
