@@ -3,9 +3,10 @@ package com.company.university.person;
 import java.util.Date;
 import java.util.Objects;
 
+import com.company.university.Identifiable;
 import com.company.university.Location;
 
-public abstract class Person {
+public abstract class Person implements Identifiable {
 
     public enum Sex {
         male, female
@@ -31,6 +32,7 @@ public abstract class Person {
         this.id = id;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -82,6 +84,8 @@ public abstract class Person {
     public void setUsed(boolean isBusy) {
         this.isUsed = isBusy;
     }
+
+    public abstract String introduceYourself();
 
     @Override
     public int hashCode() {

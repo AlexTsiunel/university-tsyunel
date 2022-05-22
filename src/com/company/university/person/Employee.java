@@ -57,6 +57,4 @@ public abstract class Employee extends Person {
     public void setSalary(Salary salary) {
         this.salary = salary;
     }
-    
-    
 }

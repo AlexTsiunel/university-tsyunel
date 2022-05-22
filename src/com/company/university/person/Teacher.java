@@ -3,6 +3,8 @@ package com.company.university.person;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.company.university.Identifiable;
 import com.company.university.division.Department;
 import com.company.university.division.Group;
 
@@ -74,18 +76,30 @@ public class Teacher extends Employee {
     public void setGroup(Group group) {
         this.group = group;
     }
-    
-    
-    
+
+    @Override
+    public String introduceYourself() {
+        String name = (super.getFirstName() == null ? "NOT ASSIGNED" : super.getFirstName());
+        String academicDegreeName = (academicDegree == null ? "NOT ASSIGNED" : academicDegree.name());
+        String departmentName = (department == null ? "NOT ASSIGNED" : department.getName());
+
+        if (group != null && group.getFaculty() != null && group.getFaculty().getName() != null)
+            departmentName = group.getFaculty().getName();
+        return String.format(
+                "My name is %s, I’m a teacher. I have a academic degree '%s'. I work in the department '%s'", name,
+                academicDegreeName.toLowerCase(), departmentName);
+    }
 
     @Override
     public String toString() {
         String departmentName = (department == null ? "NOT ASSIGNED" : department.getName());
         String groupName = (group == null ? "NOT ASSIGNED" : group.getName());
         String academicDegree = (this.academicDegree == null ? "NOT ASSIGNED" : this.academicDegree.toString());
-        String position = (this.position == null ? "NOT ASSIGNED" :this.position.toString());
+        String position = (this.position == null ? "NOT ASSIGNED" : this.position.toString());
 
-        return String.format("Teacher [id: %3d| name: %-8s %-8s| department: %-12s| academic degree: %-12s| position: %-12s| group: %-12s ]",
-                super.getId(), super.getFirstName(), super.getLastName(), departmentName, academicDegree, position, groupName);
+        return String.format(
+                "Teacher [id: %3d| name: %-8s %-8s| department: %-12s| academic degree: %-12s| position: %-12s| group: %-12s ]",
+                super.getId(), super.getFirstName(), super.getLastName(), departmentName, academicDegree, position,
+                groupName);
     }
 }

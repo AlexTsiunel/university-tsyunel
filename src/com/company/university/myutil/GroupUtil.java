@@ -1,11 +1,11 @@
-package com.company.university.myutill;
+package com.company.university.myutil;
 
 import com.company.university.division.Faculty;
 import com.company.university.division.Group;
 import com.company.university.person.Student;
 import com.company.university.person.Teacher;
 
-public class GroupUtill {
+public class GroupUtil {
 
     public static void addFaculty(Faculty faculty, Group group) {
         if (faculty != null && group != null && group.isUsed() == false) {

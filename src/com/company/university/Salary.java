@@ -58,4 +58,17 @@ public class Salary {
         this.degreeAward = degreeAward;
     }
 
+    @Override
+    public String toString() {
+        double baseSalary = (this.baseSalary == null ? 0 : this.baseSalary.doubleValue());
+        double premium = (this.premium == null ? 0 : this.premium.doubleValue());
+        double holidayPay = (this.holidayPay == null ? 0 : this.holidayPay.doubleValue());
+        double degreeAward = (this.degreeAward == null ? 0 : this.degreeAward.doubleValue());
+        double fullSalary = (this.fullSalary == null ? 0 : this.fullSalary.doubleValue());
+
+        return String.format(
+                "[base salary: %10.2f| bonus: %10.2f| holiday bonus: %10.2f|scientific degre bonus: %10.2f| full salary: %10.2f]",
+                baseSalary, premium, holidayPay, degreeAward, fullSalary);
+    }
+
 }

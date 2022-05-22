@@ -1,12 +1,13 @@
-package com.company.university.myutill;
+package com.company.university.myutil;
 
 import java.util.List;
 
 import com.company.university.division.Department;
+import com.company.university.person.Cleaner;
 import com.company.university.person.Teacher;
 import com.company.university.person.Teacher.Position;
 
-public class DepartmentUtill {
+public class DepartmentUtil {
     public static void addManager(Teacher newManager, Department department) {
         if (newManager != null && department != null && newManager.isUsed() == false) {
 
@@ -65,6 +66,13 @@ public class DepartmentUtill {
                 teachers.remove(teacher);
                 teacher.setUsed(false);
             }
+        }
+    }
+    
+    public static void addCleaner (Cleaner cleaner, Department department) {
+        if (cleaner != null && department != null && cleaner.isUsed() == false) {
+            department.setCleaner(cleaner);
+            cleaner.setUsed(true);
         }
     }
 

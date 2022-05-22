@@ -2,7 +2,9 @@ package com.company.university.division;
 
 import java.util.Objects;
 
-public abstract class DivisionUnit {
+import com.company.university.Identifiable;
+
+public abstract class DivisionUnit implements Identifiable {
     private Long id;
     private String name;
     private boolean isUsed;
@@ -12,6 +14,7 @@ public abstract class DivisionUnit {
         this.name = name;
     }
 
+    @Override
     public Long getId() {
         return id;
     }
