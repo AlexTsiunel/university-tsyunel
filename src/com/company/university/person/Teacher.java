@@ -7,6 +7,8 @@ import java.util.List;
 import com.company.university.Identifiable;
 import com.company.university.division.Department;
 import com.company.university.division.Group;
+import com.company.university.util.datastructures.DynamicArray;
+import com.company.university.util.datastructures.MyDynamicArray;
 
 public class Teacher extends Employee {
 
@@ -26,13 +28,14 @@ public class Teacher extends Employee {
     private Department department;
     private AcademicDegree academicDegree;
     private Position position;
-    private List<Subject> subjects;
+//    private List<Subject> subjects;
+    private DynamicArray subjects;
     private Group group;
 
     public Teacher(String firstName, String lastName, Sex sex, Date dateOfBirth) {
         super(firstName, lastName, sex, dateOfBirth);
         super.setId(countId++);
-        subjects = new ArrayList<>();
+        subjects = new MyDynamicArray();
         academicDegree = AcademicDegree.ASSISTANT;
         position = Position.TEACHER;
     }
@@ -61,11 +64,19 @@ public class Teacher extends Employee {
         this.position = position;
     }
 
-    public List<Subject> getSubjects() {
+//    public List<Subject> getSubjects() {
+//        return subjects;
+//    }
+//
+//    public void setSubjects(List<Subject> subjects) {
+//        this.subjects = subjects;
+//    }
+
+    public DynamicArray getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(List<Subject> subjects) {
+    public void setSubjects(DynamicArray subjects) {
         this.subjects = subjects;
     }
 

@@ -104,9 +104,9 @@ public class AccountantUtil {
                 departmentsSalary = departmentsSalary.add(department.getCleaner().getSalary().getFullSalary());
             }
             if (department.getOrdinaryTeachers() != null) {
-                for (Teacher teacher : department.getOrdinaryTeachers())
-                    if (teacher != null && teacher.getSalary() != null && teacher.getSalary().getFullSalary() != null) {
-                        departmentsSalary = departmentsSalary.add(teacher.getSalary().getFullSalary());
+                for (Object teacher : department.getOrdinaryTeachers().toArray())
+                    if (teacher != null && ((Teacher) teacher).getSalary() != null && ((Teacher) teacher).getSalary().getFullSalary() != null) {
+                        departmentsSalary = departmentsSalary.add(((Teacher) teacher).getSalary().getFullSalary());
                     }
             }
         }
