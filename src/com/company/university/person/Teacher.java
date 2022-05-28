@@ -1,10 +1,7 @@
 package com.company.university.person;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import com.company.university.Identifiable;
 import com.company.university.division.Department;
 import com.company.university.division.Group;
 import com.company.university.util.datastructures.DynamicArray;
@@ -28,7 +25,6 @@ public class Teacher extends Employee {
     private Department department;
     private AcademicDegree academicDegree;
     private Position position;
-//    private List<Subject> subjects;
     private DynamicArray subjects;
     private Group group;
 
@@ -63,14 +59,6 @@ public class Teacher extends Employee {
     public void setPosition(Position position) {
         this.position = position;
     }
-
-//    public List<Subject> getSubjects() {
-//        return subjects;
-//    }
-//
-//    public void setSubjects(List<Subject> subjects) {
-//        this.subjects = subjects;
-//    }
 
     public DynamicArray getSubjects() {
         return subjects;

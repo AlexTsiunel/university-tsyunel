@@ -1,8 +1,5 @@
 package com.company.university.division;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.company.university.person.Cleaner;
 import com.company.university.person.Teacher;
 import com.company.university.person.Teacher.Position;
@@ -13,7 +10,6 @@ public class Department extends DivisionUnit {
     private static long countId = 1;
     private Teacher manager;
     private Teacher assistantManager;
-    // private List<Teacher> ordinaryTeachers;
     private DynamicArray ordinaryTeachers;
     private Cleaner cleaner;
     private Faculty faculty;
@@ -22,7 +18,6 @@ public class Department extends DivisionUnit {
     public Department(String name) {
         super(name);
         super.setId(countId++);
-        // ordinaryTeachers = new ArrayList<>();
         ordinaryTeachers = new MyDynamicArray();
     }
 
@@ -43,14 +38,6 @@ public class Department extends DivisionUnit {
     public void setAssistantManager(Teacher assistantManager) {
         this.assistantManager = assistantManager;
     }
-
-//    public List<Teacher> getOrdinaryTeachers() {
-//        return ordinaryTeachers;
-//    }
-//
-//    public void setOrdinaryTeachers(List<Teacher> ordinaryTeachers) {
-//        this.ordinaryTeachers = ordinaryTeachers;
-//    }
 
     public DynamicArray getOrdinaryTeachers() {
         return ordinaryTeachers;

@@ -5,8 +5,6 @@ import com.company.university.util.datastructures.MyDynamicArray;
 
 public class Faculty extends DivisionUnit {
     private static long countId = 1;
-//    private List<Department> departments;
-//    private List<Group> groups;
     private DynamicArray departments;
     private DynamicArray groups;
 
@@ -16,22 +14,6 @@ public class Faculty extends DivisionUnit {
         this.groups = new MyDynamicArray();
         this.departments = new MyDynamicArray();
     }
-
-//    public List<Department> getDepartments() {
-//        return departments;
-//    }
-//
-//    public void setDepartments(List<Department> departments) {
-//        this.departments = departments;
-//    }
-//
-//    public List<Group> getGroups() {
-//        return groups;
-//    }
-//
-//    public void setGroups(List<Group> groups) {
-//        this.groups = groups;
-//    }
 
     public DynamicArray getDepartments() {
         return departments;

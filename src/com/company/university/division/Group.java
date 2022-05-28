@@ -1,9 +1,5 @@
 package com.company.university.division;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.company.university.person.Student;
 import com.company.university.person.Teacher;
 import com.company.university.util.datastructures.DynamicArray;
 import com.company.university.util.datastructures.MyDynamicArray;
@@ -37,16 +33,6 @@ public class Group extends DivisionUnit {
         this.curator = curator;
         curator.setGroup(this);
     }
-    
-    
-
-//    public List<Student> getStudents() {
-//        return students;
-//    }
-//
-//    public void setStudents(List<Student> students) {
-//        this.students = students;
-//    }
 
     public DynamicArray getStudents() {
         return students;

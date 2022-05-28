@@ -1,13 +1,10 @@
 package com.company.university.myutil;
 
-import java.util.List;
-
 import com.company.university.division.Department;
 import com.company.university.person.Cleaner;
 import com.company.university.person.Teacher;
 import com.company.university.person.Teacher.Position;
 import com.company.university.util.datastructures.DynamicArray;
-import com.company.university.util.datastructures.MyDynamicArray;
 
 public class DepartmentUtil {
     public static void addManager(Teacher newManager, Department department) {

@@ -1,13 +1,11 @@
 package com.company.university.person;
 
 import java.util.Date;
-import java.util.List;
 
 import com.company.university.util.datastructures.DynamicArray;
 
 public class Cleaner extends Employee {
     private static long countId = 1;
-//    private List<AreaOfResponsibility> areaOfResponsibility;
     private DynamicArray areaOfResponsibility;
 
     public Cleaner(String firstName, String lastName, Sex sex, Date dateOfBirth) {
@@ -23,13 +21,6 @@ public class Cleaner extends Employee {
         this.areaOfResponsibility = areaOfResponsibility;
     }
 
-    // public List<AreaOfResponsibility> getAreaOfResponsibility() {
-//        return areaOfResponsibility;
-//    }
-//
-//    public void setAreaOfResponsibility(List<AreaOfResponsibility> areaOfResponsibility) {
-//        this.areaOfResponsibility = areaOfResponsibility;
-//    }
     @Override
     public String introduceYourself() {
         String name = (super.getFirstName() == null ? "NOT ASSIGNED" : super.getFirstName());

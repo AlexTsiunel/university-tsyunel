@@ -1,12 +1,7 @@
 package com.company.university.myutil;
 
-import java.util.List;
-
 import com.company.university.division.Department;
 import com.company.university.division.Group;
-import com.company.university.person.Employee;
-import com.company.university.person.Person;
-import com.company.university.person.Student;
 import com.company.university.person.Teacher;
 
 public class PrintToConsole {

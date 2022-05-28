@@ -1,11 +1,9 @@
 package com.company.university.myutil;
 
-import java.util.List;
 
 import com.company.university.division.Group;
 import com.company.university.person.Student;
 import com.company.university.util.datastructures.DynamicArray;
-import com.company.university.util.datastructures.MyDynamicArray;
 
 public class Calculator {
     public static double averageScoreStudentsOfGroup(Group group) {
