@@ -1,16 +1,17 @@
 package com.company.university.division;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.company.university.person.Cleaner;
 import com.company.university.person.Teacher;
 import com.company.university.person.Teacher.Position;
-import com.company.university.util.datastructures.DynamicArray;
-import com.company.university.util.datastructures.MyDynamicArray;
 
 public class Department extends DivisionUnit {
     private static long countId = 1;
     private Teacher manager;
     private Teacher assistantManager;
-    private DynamicArray ordinaryTeachers;
+    private List<Teacher> ordinaryTeachers;
     private Cleaner cleaner;
     private Faculty faculty;
     private int maxNumberOfTeacher = 8;
@@ -18,7 +19,7 @@ public class Department extends DivisionUnit {
     public Department(String name) {
         super(name);
         super.setId(countId++);
-        ordinaryTeachers = new MyDynamicArray();
+        ordinaryTeachers = new ArrayList<>();
     }
 
     public Teacher getManager() {
@@ -39,11 +40,11 @@ public class Department extends DivisionUnit {
         this.assistantManager = assistantManager;
     }
 
-    public DynamicArray getOrdinaryTeachers() {
+    public List<Teacher> getOrdinaryTeachers() {
         return ordinaryTeachers;
     }
 
-    public void setOrdinaryTeachers(DynamicArray ordinaryTeachers) {
+    public void setOrdinaryTeachers(List<Teacher> ordinaryTeachers) {
         this.ordinaryTeachers = ordinaryTeachers;
     }
 

@@ -1,33 +1,34 @@
 package com.company.university.division;
 
-import com.company.university.util.datastructures.DynamicArray;
-import com.company.university.util.datastructures.MyDynamicArray;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Faculty extends DivisionUnit {
     private static long countId = 1;
-    private DynamicArray departments;
-    private DynamicArray groups;
+    private List<Department> departments;
+    private List<Group> groups;
 
     public Faculty(String name) {
         super(name);
         super.setId(countId++);
-        this.groups = new MyDynamicArray();
-        this.departments = new MyDynamicArray();
+        this.groups = new ArrayList<>();
+        this.departments = new ArrayList<>();
     }
 
-    public DynamicArray getDepartments() {
+    public List<Department> getDepartments() {
         return departments;
     }
 
-    public void setDepartments(DynamicArray departments) {
+    public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
 
-    public DynamicArray getGroups() {
+    public List<Group> getGroups() {
         return groups;
     }
 
-    public void setGroups(DynamicArray groups) {
+    public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
 
