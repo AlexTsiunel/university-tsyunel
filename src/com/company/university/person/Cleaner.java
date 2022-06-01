@@ -1,23 +1,23 @@
 package com.company.university.person;
 
 import java.util.Date;
+import java.util.List;
 
-import com.company.university.util.datastructures.DynamicArray;
 
 public class Cleaner extends Employee {
     private static long countId = 1;
-    private DynamicArray areaOfResponsibility;
+    private List<AreaOfResponsibility> areaOfResponsibility;
 
     public Cleaner(String firstName, String lastName, Sex sex, Date dateOfBirth) {
         super(firstName, lastName, sex, dateOfBirth);
         super.setId(countId++);
     }
 
-    public DynamicArray getAreaOfResponsibility() {
+    public List<AreaOfResponsibility> getAreaOfResponsibility() {
         return areaOfResponsibility;
     }
 
-    public void setAreaOfResponsibility(DynamicArray areaOfResponsibility) {
+    public void setAreaOfResponsibility(List<AreaOfResponsibility> areaOfResponsibility) {
         this.areaOfResponsibility = areaOfResponsibility;
     }
 

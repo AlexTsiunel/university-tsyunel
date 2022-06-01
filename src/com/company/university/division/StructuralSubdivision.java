@@ -1,12 +1,14 @@
 package com.company.university.division;
 
-import com.company.university.util.datastructures.DynamicArray;
+import java.util.List;
+
+import com.company.university.person.Employee;
 
 public class StructuralSubdivision {
     private static long countId;
     private Long id;
     private String name;
-    private DynamicArray employees;
+    private List<Employee> employees;
 
     public StructuralSubdivision(String name) {
         super();
@@ -26,11 +28,11 @@ public class StructuralSubdivision {
         this.name = name;
     }
 
-    public DynamicArray getEmployees() {
+    public List<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(DynamicArray employees) {
+    public void setEmployees(List<Employee> employees) {
         this.employees = employees;
     }
 }

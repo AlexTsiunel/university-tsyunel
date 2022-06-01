@@ -1,11 +1,11 @@
 package com.company.university.person;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.company.university.division.Department;
 import com.company.university.division.Group;
-import com.company.university.util.datastructures.DynamicArray;
-import com.company.university.util.datastructures.MyDynamicArray;
 
 public class Teacher extends Employee {
 
@@ -25,13 +25,13 @@ public class Teacher extends Employee {
     private Department department;
     private AcademicDegree academicDegree;
     private Position position;
-    private DynamicArray subjects;
+    private List<Subject> subjects;
     private Group group;
 
     public Teacher(String firstName, String lastName, Sex sex, Date dateOfBirth) {
         super(firstName, lastName, sex, dateOfBirth);
         super.setId(countId++);
-        subjects = new MyDynamicArray();
+        subjects = new ArrayList<>();
         academicDegree = AcademicDegree.ASSISTANT;
         position = Position.TEACHER;
     }
@@ -60,11 +60,19 @@ public class Teacher extends Employee {
         this.position = position;
     }
 
-    public DynamicArray getSubjects() {
+    public static long getCountId() {
+        return countId;
+    }
+
+    public static void setCountId(long countId) {
+        Teacher.countId = countId;
+    }
+
+    public List<Subject> getSubjects() {
         return subjects;
     }
 
-    public void setSubjects(DynamicArray subjects) {
+    public void setSubjects(List<Subject> subjects) {
         this.subjects = subjects;
     }
 

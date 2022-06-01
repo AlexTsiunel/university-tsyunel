@@ -1,20 +1,24 @@
 package com.company.university.division;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.company.university.person.Student;
 import com.company.university.person.Teacher;
-import com.company.university.util.datastructures.DynamicArray;
-import com.company.university.util.datastructures.MyDynamicArray;
+import com.company.university.util.datastructures.MyList;
+import com.company.university.util.datastructures.MyArrayList;
 
 public class Group extends DivisionUnit {
     private static long countId = 1;
     private Faculty faculty;
     private Teacher curator;
-    private DynamicArray students;
+    private List<Student> students;
     private int groupCapacity = 8;
 
     public Group(String name) {
         super(name);
         super.setId(countId++);
-        students = new MyDynamicArray();
+        students = new ArrayList<>();
     }
 
     public Faculty getFaculty() {
@@ -34,12 +38,20 @@ public class Group extends DivisionUnit {
         curator.setGroup(this);
     }
 
-    public DynamicArray getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(DynamicArray students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
+    }
+
+    public int getGroupCapacity() {
+        return groupCapacity;
+    }
+
+    public void setGroupCapacity(int groupCapacity) {
+        this.groupCapacity = groupCapacity;
     }
 
     public int getCapacity() {
