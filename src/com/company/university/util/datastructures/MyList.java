@@ -7,9 +7,9 @@ public interface MyList<T> extends Iterable<T> {
 
     boolean remove(T obj);
 
-    boolean contains(T obj);
+    boolean contains(T obj);//
 
-    T get(int index);
+    T get(int index);//
 
-    Object[] toArray();
+    Object[] toArray();//
 }
