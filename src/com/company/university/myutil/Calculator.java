@@ -1,9 +1,9 @@
-package com.company.university.myutill;
+package com.company.university.myutil;
 
 import java.util.List;
 
-import com.company.university.Group;
-import com.company.university.Student;
+import com.company.university.division.Group;
+import com.company.university.person.Student;
 
 public class Calculator {
     public static double averageScoreStudentsOfGroup(Group group) {

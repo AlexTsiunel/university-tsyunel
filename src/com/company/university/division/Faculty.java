@@ -1,31 +1,17 @@
-package com.company.university;
+package com.company.university.division;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Faculty {
+public class Faculty extends DivisionUnit {
     private static long countId = 1;
-    private Long id;
-    private String name;
     private List<Department> departments;
     private List<Group> groups;
 
     public Faculty(String name) {
-        this.id = countId++;
-        this.name = name;
+        super(name);
+        super.setId(countId++);
         this.groups = new ArrayList<>();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<Department> getDepartments() {
@@ -57,7 +43,7 @@ public class Faculty {
             groups.remove(group);
         }
     }
-    
+
     public void addDepartment(Department department) {
         if (department != null) {
             if (!departments.contains(department)) {
