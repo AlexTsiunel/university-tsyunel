@@ -8,6 +8,7 @@ import com.company.university.division.Faculty;
 import com.company.university.division.StructuralSubdivision;
 import com.company.university.myutil.AccountantUtil;
 import com.company.university.myutil.DepartmentUtil;
+import com.company.university.myutil.FacultyUtil;
 import com.company.university.myutil.GroupUtil;
 import com.company.university.myutil.PrintToConsole;
 import com.company.university.person.Student;
@@ -281,5 +282,13 @@ public class App {
         System.out.println(teacher2.introduceYourself());
         System.out.println(teacher3.introduceYourself());
         System.out.println(cleaner1.introduceYourself());
+        
+        FacultyUtil.addDepartment(department1, faculty1);;
+        FacultyUtil.addGroupe(group1, faculty1);
+        FacultyUtil.addGroupe(group2, faculty1);
+        FacultyUtil.addGroupe(group3, faculty1);
+        
+        System.out.println("_______________________________");
+        System.out.println(faculty1.toString());
     }
 }

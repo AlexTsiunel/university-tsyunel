@@ -1,11 +1,10 @@
 package com.company.university.myutil;
 
-import java.util.List;
-
 import com.company.university.division.Department;
 import com.company.university.person.Cleaner;
 import com.company.university.person.Teacher;
 import com.company.university.person.Teacher.Position;
+import com.company.university.util.datastructures.DynamicArray;
 
 public class DepartmentUtil {
     public static void addManager(Teacher newManager, Department department) {
@@ -46,7 +45,7 @@ public class DepartmentUtil {
 
     public static void addTeacher(Teacher newTeacher, Department department) {
         if (newTeacher != null && department != null && newTeacher.isUsed() == false) {
-            List<Teacher> teachers = department.getOrdinaryTeachers();
+            DynamicArray teachers = department.getOrdinaryTeachers();
             if (teachers != null && newTeacher.getPosition() == Position.TEACHER) {
                 if (teachers.contains(newTeacher) || teachers.size() >= department.getMaxNumberOfTeacher()) {
                     return;
@@ -61,7 +60,7 @@ public class DepartmentUtil {
 
     public static void removeTeacher(Teacher teacher, Department department) {
         if (teacher != null && department != null) {
-            List<Teacher> teachers = department.getOrdinaryTeachers();
+            DynamicArray teachers = department.getOrdinaryTeachers();
             if (teachers != null && teachers.contains(teacher)) {
                 teachers.remove(teacher);
                 teacher.setUsed(false);

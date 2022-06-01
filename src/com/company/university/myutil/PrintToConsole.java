@@ -1,10 +1,7 @@
 package com.company.university.myutil;
 
-import java.util.List;
-
 import com.company.university.division.Department;
 import com.company.university.division.Group;
-import com.company.university.person.Student;
 import com.company.university.person.Teacher;
 
 public class PrintToConsole {
@@ -34,7 +31,7 @@ public class PrintToConsole {
         }
         if (showStudents == true && group.getStudents() != null) {
             System.out.println("Group students info:");
-            for (Student student : group.getStudents()) {
+            for (Object student : group.getStudents().toArray()) {
                 System.out.println(student.toString());
             }
         }
@@ -51,7 +48,7 @@ public class PrintToConsole {
             System.out.println(department.toString());
             if (showTeachers == true && department.getOrdinaryTeachers() != null) {
                 System.out.println("Department teachers info:");
-                for (Teacher teacher : department.getOrdinaryTeachers()) {
+                for (Object teacher : department.getOrdinaryTeachers().toArray()) {
                     System.out.println(teacher.toString());
                 }
             }
@@ -80,11 +77,11 @@ public class PrintToConsole {
             }
 
             if (department.getOrdinaryTeachers() != null) {
-                for (Teacher teacher : department.getOrdinaryTeachers())
-                    if (teacher != null && teacher.getSalary() != null && teacher.getSalary() != null) {
-                        System.out.printf(message, teacher.getFirstName(), teacher.getLastName(),
-                                teacher.getPosition());
-                        System.out.println(teacher.getSalary().toString());
+                for (Object teacher : department.getOrdinaryTeachers().toArray())
+                    if (teacher != null && ((Teacher) teacher).getSalary() != null && ((Teacher) teacher).getSalary() != null) {
+                        System.out.printf(message, ((Teacher) teacher).getFirstName(), ((Teacher) teacher).getLastName(),
+                                ((Teacher) teacher).getPosition());
+                        System.out.println(((Teacher) teacher).getSalary().toString());
                     }
             }
             if (department.getCleaner() != null && department.getCleaner().getSalary() != null) {
