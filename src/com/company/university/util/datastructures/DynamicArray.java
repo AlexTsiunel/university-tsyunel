@@ -1,15 +1,15 @@
 package com.company.university.util.datastructures;
 
-public interface DynamicArray {
+public interface DynamicArray<T> {
     int size();
 
-    boolean add(Object obj);
+    boolean add(T obj);
 
-    boolean remove(Object obj);
+    boolean remove(T obj);
 
-    boolean contains(Object obj);
+    boolean contains(T obj);
 
-    Object get(int index);
+    T get(int index);
 
     Object[] toArray();
 }

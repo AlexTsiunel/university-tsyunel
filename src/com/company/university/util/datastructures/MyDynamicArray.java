@@ -1,6 +1,6 @@
 package com.company.university.util.datastructures;
 
-public class MyDynamicArray implements DynamicArray {
+public class MyDynamicArray<T> implements DynamicArray<T> {
     private Object[] box;
     private int capañity = 10;
     private int firstFreeIndex = 0;
@@ -16,7 +16,7 @@ public class MyDynamicArray implements DynamicArray {
     }
 
     @Override
-    public boolean add(Object obj) {
+    public boolean add(T obj) {
         if (firstFreeIndex == box.length) {
             int newCapacity = (int) (capañity * 1.5);
             Object[] newBox = new Object[newCapacity];
@@ -33,7 +33,7 @@ public class MyDynamicArray implements DynamicArray {
     }
 
     @Override
-    public boolean remove(Object obj) {
+    public boolean remove(T obj) {
         if (obj == null) {
             for (int index = 0; index < firstFreeIndex; index++) {
                 if (box[index] == null) {
@@ -56,7 +56,7 @@ public class MyDynamicArray implements DynamicArray {
     }
 
     @Override
-    public boolean contains(Object obj) {
+    public boolean contains(T obj) {
         for (int index = 0; index < firstFreeIndex; index++) {
             if (obj.equals(box[index])) {
                 return true;
@@ -66,8 +66,8 @@ public class MyDynamicArray implements DynamicArray {
     }
 
     @Override
-    public Object get(int index) {
-        return box[index];
+    public T get(int index) {
+        return (T)box[index];
     }
 
     @Override
