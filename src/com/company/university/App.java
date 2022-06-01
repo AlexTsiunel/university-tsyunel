@@ -14,7 +14,6 @@ import com.company.university.myutil.PrintToConsole;
 import com.company.university.person.Student;
 import com.company.university.person.Teacher;
 import com.company.university.person.Teacher.AcademicDegree;
-import com.company.university.person.Teacher.Position;
 import com.company.university.person.Cleaner;
 import com.company.university.person.Person.Sex;;
 

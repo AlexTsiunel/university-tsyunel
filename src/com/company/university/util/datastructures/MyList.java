@@ -1,6 +1,6 @@
 package com.company.university.util.datastructures;
 
-public interface DynamicArray<T> {
+public interface MyList<T> extends Iterable<T> {
     int size();
 
     boolean add(T obj);

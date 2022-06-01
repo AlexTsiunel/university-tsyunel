@@ -1,11 +1,13 @@
 package com.company.university.util.datastructures;
 
-public class MyDynamicArray<T> implements DynamicArray<T> {
+import java.util.Iterator;
+
+public class MyArrayList<T> implements MyList<T> {
     private Object[] box;
     private int capañity = 10;
     private int firstFreeIndex = 0;
 
-    public MyDynamicArray() {
+    public MyArrayList() {
         super();
         this.box = new Object[capañity];
     }
@@ -67,7 +69,8 @@ public class MyDynamicArray<T> implements DynamicArray<T> {
 
     @Override
     public T get(int index) {
-        return (T)box[index];
+        checkPositionIndex(index);
+        return (T) box[index];
     }
 
     @Override
@@ -83,5 +86,34 @@ public class MyDynamicArray<T> implements DynamicArray<T> {
         for (int i = index + 1; i <= firstFreeIndex; i++) {
             box[i - 1] = box[i];
         }
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int index;
+
+            @Override
+            public boolean hasNext() {
+                boolean result = false;
+                if (index >= 0 && index < firstFreeIndex) {
+                  result = true;
+              }
+              return result;
+            }
+
+            @Override
+            public T next() {
+                return (T) box[index++];
+            }
+        };
+    }
+    
+    private void checkPositionIndex(int index) {
+        if (!isPositionIndex(index))
+            throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, firstFreeIndex));
+    }
+    private boolean isPositionIndex(int index) {
+        return index >= 0 && index <= firstFreeIndex;
     }
 }

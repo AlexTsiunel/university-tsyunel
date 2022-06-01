@@ -5,8 +5,8 @@ import java.util.List;
 
 import com.company.university.person.Student;
 import com.company.university.person.Teacher;
-import com.company.university.util.datastructures.DynamicArray;
-import com.company.university.util.datastructures.MyDynamicArray;
+import com.company.university.util.datastructures.MyList;
+import com.company.university.util.datastructures.MyArrayList;
 
 public class Group extends DivisionUnit {
     private static long countId = 1;
