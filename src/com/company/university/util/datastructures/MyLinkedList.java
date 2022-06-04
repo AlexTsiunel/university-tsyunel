@@ -2,7 +2,8 @@ package com.company.university.util.datastructures;
 
 import java.util.Iterator;
 
-public class MyLinkedList<T> implements Iterable<T> {
+public class MyLinkedList<T> implements MyList<T> {
+
     private int size = 0;
     private Node<T> head;
     private Node<T> tail;
@@ -11,124 +12,99 @@ public class MyLinkedList<T> implements Iterable<T> {
         return head == null;
     }
 
-    public T get(int index) {
-
-        if (index < 0 || index > size - 1) {
-            throw new IndexOutOfBoundsException();
-        }
-        Node<T> node = head;
-        for (int i = 0; i < index; i++) {
-            node = node.next;
-        }
-        return node.data;
+    @Override
+    public int size() {
+        return size;
     }
 
-    public void add(int index, T item) {
-
-        checkPositionIndex(index);
-
-        Node<T> newNode = new Node<>();
-        newNode.data = item;
-        newNode.index = index;
-
-        if (index == 0 && size == 0) {
-            head = newNode;
-            tail = newNode;
-            size++;
-            return;
-        }
-
-        if (index == 0 && size != 0) {
-            newNode.next = head;
-            head = newNode;
-            size++;
-            return;
-        }
-
-        if (index == size) {
-            tail.next = newNode;
-            tail = newNode;
-            size++;
-            return;
-        }
-
-        Node<T> node = head;
-        for (int i = 0; i < index - 1; i++) {
-            node = node.next;
-        }
-
-        newNode.next = node.next;
-        node.next = newNode;
-        node = newNode;
-
-        for (int i = index; i < size; i++) {
-            node = node.next;
-            node.index++;
-        }
-        size++;
-    }
-
-    public void add(T item) {
-        Node<T> newNode = new Node<>();
-        newNode.data = item;
-
+    @Override
+    public boolean add(T element) {
+        Node newNode = new Node();
+        newNode.data = element;
         if (isEmpty()) {
-            newNode.index = 1;
-            head = newNode;
-            tail = newNode;
-            size++;
+            return addElementIntoEmptyList(newNode);
+            
         } else {
-            newNode.index = tail.index + 1;
-            tail.next = newNode;
-            tail = newNode;
-            size++;
+            return addLastElement(newNode);
         }
     }
 
-    // !!!THE METHOD GIVES AN ERROR WHEN DELETING THE LAST ELEMENT!!!!
-    // IN DEVELOPMENT!!!
-    public void remove(T item) {
-
-        if (head.data.equals(item)) {
-            head = head.next;
-            size--;
-            for (Node<T> x = head; x != null; x = x.next) {
-                x.index--;
+    public void add(int index, T element) {
+        checkPositionIndex(index);
+        Node newNode = new Node();
+        newNode.data = element;
+        newNode.index = index;
+        if (index == 0) {
+            if (isEmpty()) {
+                addFirstElement(newNode);
             }
-            return;
-        }
 
-        for (Node<T> x = head.next; x != null; x = x.next) {
-            if (x.data.equals(item)) {
-                remove(x.index);
-            }
+        } else if (index == size) {
+            addLastElement(newNode);
+        } else {
+            addIntermediateElement(newNode, index);
         }
     }
 
-    public void remove(int indexRemoveItem) {
-        for (Node<T> x = head.next; x != null; x = x.next) {
-            if (x.index == indexRemoveItem - 1) {
-                Node node = x.next.next;
-                x.next = node;
-                for (Node<T> y = node.next; y != null; y = y.next) {
-                    y.index--;
+    @Override
+    public boolean remove(T element) {
+        if (head.data.equals(element)) {
+            return removeFirstElement();
+
+        } else if (tail.data == element) {
+            return removeLastElement();
+        } else {
+
+            for (Node<T> currentNode = head; currentNode != null; currentNode = currentNode.next) {
+                if (currentNode.data.equals(element)) {
+                    return removeIntermediateElement(currentNode);
                 }
+            }
+        }
+        return false;
+    }
 
-                size--;
-                return;
+    public void remove(int index) {
+        checkPositionIndex(index);
+        if (index == 0) {
+            removeFirstElement();
+        } else if (index == size - 1) {
+            removeLastElement();
+        } else {
+            for (Node<T> currentNode = head; currentNode != null; currentNode = currentNode.next) {
+                if (currentNode.index == index) {
+                    removeIntermediateElement(currentNode);
+                    return;
+                }
             }
         }
     }
 
-    public boolean contains(T item) {
-        for (Node<T> x = head.next; x != null; x = x.next) {
-            if (x.data.equals(item)) {
+    @Override
+    public boolean contains(T element) {
+        for (Node<T> currentNode = head; currentNode != null; currentNode = currentNode.next) {
+            if (currentNode.data.equals(element)) {
                 return true;
             }
         }
         return false;
     }
 
+    @Override
+    public T get(int index) {
+        if (!(index >= 0 && index < size)) {
+            throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, size));
+        }
+        T result = null;
+        for (Node<T> x = head; x != null; x = x.next) {
+            if (x.index == index) {
+                result = x.data;
+            }
+        }
+        return result;
+    }
+
+    @Override
     public Object[] toArray() {
         Object[] array = new Object[size];
         Node<T> node = head;
@@ -137,6 +113,119 @@ public class MyLinkedList<T> implements Iterable<T> {
             node = node.next;
         }
         return array;
+    }
+
+    private boolean removeFirstElement() {
+        if (head.next != null) {
+            head.next.previous = null;
+        }
+        head = head.next;
+        for (Node<T> currentNode = head; currentNode != null; currentNode = currentNode.next) {
+            currentNode.index--;
+        }
+        size--;
+        return true;
+    }
+
+    private boolean removeIntermediateElement(Node node) {
+        for (Node<T> currentNode = node.next; currentNode != null; currentNode = currentNode.next) {
+            currentNode.index--;
+        }
+        node.previous.next = node.next;
+        node.next.previous = node.previous;
+        node = null;
+        size--;
+        return true;
+    }
+
+    private boolean removeLastElement() {
+        if (tail.previous != null) {
+            tail.previous.next = null;
+        }
+        tail = tail.previous;
+        size--;
+        return true;
+    }
+
+    private boolean addElementIntoEmptyList(Node node) {
+        if (isEmpty()) {
+            node.index = 0;
+            head = node;
+            tail = node;
+            size++;
+            return true;
+        }
+        return false;
+    }
+
+    private boolean addFirstElement(Node node) {
+        if (isEmpty()) {
+            addElementIntoEmptyList(node);
+        } else {
+            node.index = 0;
+            head.previous = node;
+            node.next = head;
+            head = node;
+            size++;
+            for (Node<T> currentNode = head.next; currentNode != null; currentNode = currentNode.next) {
+                currentNode.index++;
+            }
+        }
+        return true;
+    }
+
+    private boolean addIntermediateElement(Node node, int index) {
+        if (index > 0 && index < size - 1) {
+            for (Node<T> currentNode = head.next; currentNode != null; currentNode = currentNode.next) {
+                if (currentNode.index == index) {
+                    node.previous = currentNode.previous;
+                    node.next = currentNode;
+                    currentNode.previous.next = node;
+                    currentNode.previous = node;
+                }
+            }
+            increaseNextElementsIndex(node);
+            size++;
+            return true;
+        }
+        return false;
+    }
+
+    private boolean addLastElement(Node node) {
+        node.index = tail.index + 1;
+        tail.next = node;
+        node.previous = tail;
+        tail = node;
+        size++;
+        return true;
+    }
+
+    private void increaseNextElementsIndex(Node node) {
+        for (Node<T> currentNode = node.next; currentNode != null; currentNode = currentNode.next) {
+            currentNode.index++;
+        }
+    }
+
+    private void reduceNextElementsIndex(Node node) {
+        for (Node<T> currentNode = node.next; currentNode != null; currentNode = currentNode.next) {
+            currentNode.index--;
+        }
+    }
+
+    private void checkPositionIndex(int index) {
+        if (!isPositionIndex(index))
+            throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, size));
+    }
+
+    private boolean isPositionIndex(int index) {
+        return index >= 0 && index <= size;
+    }
+
+    private static class Node<T> {
+        int index;
+        T data;
+        Node<T> next;
+        Node<T> previous;
     }
 
     @Override
@@ -159,18 +248,4 @@ public class MyLinkedList<T> implements Iterable<T> {
         };
     }
 
-    private void checkPositionIndex(int index) {
-        if (!isPositionIndex(index))
-            throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, size));
-    }
-
-    private boolean isPositionIndex(int index) {
-        return index >= 0 && index <= size;
-    }
-
-    private static class Node<T> {
-        int index;
-        T data;
-        Node<T> next;
-    }
 }
